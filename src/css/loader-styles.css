@@ -1,36 +1,43 @@
 .hidden {
   display: none;
 }
-
 .loader {
-  border: 8px double #1c24c4;
-  border-radius: 50%;
-  border-top: 8px solid #38db69;
-  width: 50px;
-  height: 50px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -25px;
-  margin-left: -25px;
+  width: 15px;
+  height: 64px;
+}
+.loader::after,
+.loader::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #2d91dd;
+  background: currentColor;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 45px 0, -45px 0;
+  animation: move 0.5s linear infinite alternate;
 }
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+.loader::before {
+  top: 100%;
+  box-shadow: 50px 0;
+  left: -25px;
+  animation-direction: alternate-reverse;
 }
 
-@keyframes spin {
+@keyframes move {
   0% {
-    transform: rotate(0deg);
+    top: 0;
+  }
+  50% {
+    top: 50%;
   }
   100% {
-    transform: rotate(360deg);
+    top: 100%;
   }
 }
